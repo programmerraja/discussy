@@ -10,7 +10,7 @@ const Auth = require("../middleware/auth.js");
 router.get("/getAnswers/:questionId",
 			answerController.getAnswers);
 
-router.get("/answers/:questionId/",
+router.get("/getSortedAnswers/:questionId/",
 			answerController.getSortedAnswer);
 
 module.exports = router;

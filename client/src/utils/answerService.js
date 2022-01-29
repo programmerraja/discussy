@@ -5,6 +5,6 @@ export default {
     return axios.get(`/getAnswers/${question_id}`);
   },
   getSortedAnswers:function({value,type,question_id}){
-    return axios.get(`/answers/${question_id}/?sortBy=${value}&type=${type}`);
+    return axios.get(`/getSortedAnswers/${question_id}/?sortBy=${value}&type=${type}`);
   }
 };
