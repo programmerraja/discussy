@@ -18,14 +18,5 @@ A website for sharing question. build on MERN stack
 	<li>User can sort the answer by latest/old</li>
 </ol>  
 
-## what are the features need to be add such that the website will look awesome ?
-
-<ul>
- 	<li>Liking the question/answer</li>
- 	<li>Reporting the question/answer</li>
- 	<li>Search question by topics</li>
- 	<li>Send mail to user if his question got answer</li>
- 	<li>Tag the user while answering the question</li>
- </ul>
 
 live website <a href="https://https://discussy.herokuapp.com/">click here </a>

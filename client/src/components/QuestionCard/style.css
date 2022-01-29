@@ -67,6 +67,6 @@
 @media (max-width: 700px) {
   .questioncard_container ,
   .answercard_container {
-    width: 82%;
+    width: 78%;
   }
 }
