@@ -2,6 +2,7 @@ import React from "react";
 import {useState,useEffect} from "react";
 import {Link } from "react-router-dom";
 
+import FilterBar from "../../components/FilterBar";
 import CardLoader from "../../components/CardLoader";
 import QuestionCard from "../../components/QuestionCard";
 
@@ -70,15 +71,16 @@ function Questions(){
 		});
 	}
   }
+  
   //for search
   const search=(val)=>{
   		setSearchContent(val);
-  		questions.forEach((questionObj)=>{
-  			if(!questionObj.desc.toLowerCase().includes(val.toLowerCase()) ){
-  				questionObj.isShow=true;
+  		questions.forEach((question_obj)=>{
+  			if(!question_obj.desc.toLowerCase().includes(val.toLowerCase()) ){
+  				question_obj.isShow=true;
   			}
   			else{
-  				questionObj.isShow=false;
+  				question_obj.isShow=false;
   			}
   		})
   }
@@ -87,40 +89,20 @@ function Questions(){
 	    <>
 	    <div className="questions_wrapper">
 				<div className="questions_container">
-					<div className="questions_search-wrapper">
-					 <input type="text" 
-					 		className="questions_search" 
-					 		placeholder="Search here.."
-					 		value={search_content}
-					 		onChange={(e)=>{search(e.target.value)}}
-					 />
-					 <div className="filter_option-wrapper">
-						 <label className="filter_option-label">
-		                   <span>Sort By: </span></label>
-						   <select
-		                          className="filter_option" 
-		                          onChange={(e)=>{
-		                          	setSortBy(e.target.value);
-		                          	sortQuestions(e.target.value);}}>
-			                  <option value="">None</option>
-			                  <option value="latest">Latest</option>
-			                  <option value="oldest">Old</option>
-		                 </select>
-	                 </div>
-					</div>
+					<FilterBar search_content={search_content} search={search} setSortBy={setSortBy} sort={sortQuestions}/>
 			    	<CardLoader  loading={loading}/>
 				    	{
 					    	 questions.length>0
 					    	?
 					    	(
 					    		<div className="questions_content-wrapper">
-						    		{questions.map((questionObj,index)=>
+						    		{questions.map((question_obj,index)=>
 						    		{
-						    			if(!questionObj.isShow){
+						    			if(!question_obj.isShow){
 						    				isFind=1;
 							    			return(
-							    				 <Link key={questionObj._id} to={`/question/${questionObj._id}`} className="questioncard_link"> 
-							    						<QuestionCard  {...questionObj}/>
+							    				 <Link key={question_obj._id} to={`/question/${question_obj._id}`} className="questioncard_link"> 
+							    						<QuestionCard  {...question_obj}/>
 											     </Link>
 							    				)
 							    		}

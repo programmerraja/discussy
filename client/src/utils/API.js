@@ -70,7 +70,9 @@ export default {
   logout:userService.logout,
   //user question
   getMyQuestions:userService.getMyQuestions,
+  getMySortedQuestions:userService.getMySortedQuestions,
   getMyQuestion:userService.getMyQuestion,
+
 
   addMyQuestion:userService.addMyQuestion,
   updateMyQuestion:userService.updateMyQuestion,

@@ -37,6 +37,11 @@ router.get("/getMyQuestions",
 			Auth.isAuthenticatedUser(),
 			userController.getMyQuestions);
 
+router.get("/getMySortedQuestions",
+			Auth.isAuthenticatedUser(),
+			userController.getMySortedQuestions);
+
+
 router.get("/getMyQuestion/:questionId",
 			Auth.isAuthenticatedUser(),
 			userController.getMyQuestion);

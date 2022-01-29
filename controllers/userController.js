@@ -272,6 +272,27 @@ const User = {
           res.json({status:"failed",msg:"Something went wrong"});
         })
     },
+    getMySortedQuestions:function(req,res){
+        if(req.query.sortBy && req.query.type){
+          db.Question
+            .find({userId:req.user._id})
+            .sort({[req.query.sortBy]:parseInt(req.query.type)})
+
+            .then((questions_obj)=>{
+                questions_obj.forEach(question=>{
+                 question._doc.user={name:req.user.name}
+               })
+
+               res.json({status:"sucess",questions:questions_obj});
+            })
+            .catch((err)=>{
+              Util.logError(err.msg,err);
+              res.json({status:"failed",msg:"Something went wrong"});
+            })  
+        }else{
+              res.json({status:"failed",msg:"Query missing"});
+        }
+      },
     //single question for editing
     getMyQuestion:function(req,res){
         db.Question.findOne({userId:req.user._id,_id:req.params.questionId})

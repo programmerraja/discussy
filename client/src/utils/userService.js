@@ -31,6 +31,9 @@ export default {
   getMyQuestions:function(){
     return axios.get("/user/getMyQuestions/");
   },
+  getMySortedQuestions:function({value,type}){
+    return axios.get(`/user/getMySortedQuestions/?sortBy=${value}&type=${type}`);
+  },
   getMyQuestion:function(question_id){
     return axios.get(`/user/getMyQuestion/${question_id}`);
   },
