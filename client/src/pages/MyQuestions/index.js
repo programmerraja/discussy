@@ -140,9 +140,9 @@ function MyQuestion(){
                     }
             })
         }
-        {!isFind && (<div className="questions_content">
+        {(!isFind && questions.length>0) ?(<div className="questions_content">
                             <p className="questions_content-text">No question find with name {search_content}</p>
-                          </div>)}
+                          </div>):null}
         { 
           questions.length==0 && !loading?
           <p className="text_center">You has added No questions yet 
