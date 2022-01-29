@@ -55,9 +55,14 @@ function QuestionCard({_id,topics,desc,user,createdAt,updatedAt,isEditing,delete
             </div>
 
             {isEditing &&
-              <div className="edit_icon">
-                <i className="fas fa-trash-alt" onClick={()=>{deleteQuestion(_id)}}></i>
-              </div>
+              <>
+                <div className="edit_icon">
+                  <i className="fas fa-trash-alt" onClick={()=>{deleteQuestion(_id)}}></i>
+                </div>
+                <Link to={`/question/${_id}`} className="questioncard_link"> 
+                      View question
+                </Link>
+              </>
             }
         </div>
     </>);

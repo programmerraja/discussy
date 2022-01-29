@@ -260,12 +260,12 @@ const User = {
     getMyQuestions:function(req,res){
         db.Question
         .find({userId:req.user._id})
-        .then((questions)=>{
-           questions.forEach(question=>{
+        .then((questions_obj)=>{
+           questions_obj.forEach(question=>{
              question._doc.user={name:req.user.name}
            })
 
-           res.json({status:"sucess",questions:questions});
+           res.json({status:"sucess",questions:questions_obj});
         })
         .catch((err)=>{
           Util.logError(err.msg,err);
@@ -275,9 +275,9 @@ const User = {
     //single question for editing
     getMyQuestion:function(req,res){
         db.Question.findOne({userId:req.user._id,_id:req.params.questionId})
-        .then((question)=>{
-              if(question){
-                res.json({status:"sucess",question:question});
+        .then((question_obj)=>{
+              if(question_obj){
+                res.json({status:"sucess",question:question_obj});
               }else{
                res.json({status:"failed",msg:"Something went wrong"});
               }
@@ -291,7 +291,7 @@ const User = {
       if(req.body.topics && req.body.question){
          db.Question
            .create({userId:req.user._id,topics:req.body.topics,desc:req.body.question})
-           .then((questionObj)=>{
+           .then((question_obj)=>{
                 res.json({status:"sucess",msg:"sucessfully added your question"})
             })
            .catch(err=>{
@@ -306,9 +306,8 @@ const User = {
       if(req.body.question_id && req.body.topics && req.body.question){
         db.Question
           .findOneAndUpdate({_id:req.body.question_id,userId:req.user._id,},{topics:req.body.topics,desc:req.body.question})
-          .then((reviewObj)=>{
-
-                res.json({status:"sucess",msg:"sucessfully updated your review"})
+          .then((question_obj)=>{
+                res.json({status:"sucess",msg:"sucessfully updated your question"})
           })
           .catch((err)=>{
             res.json({status:"failed",msg:"Something went wrong"});
@@ -321,11 +320,12 @@ const User = {
       if(req.params.questionId){
         db.Question
         .findOneAndRemove({_id:req.params.questionId})
-        .then((reviewObj)=>{
+        .then((question_obj)=>{
               res.json({status:"sucess",msg:"sucessfully deleted your question"})
+              //also remove all the answer
               db.Answer
                 .deleteMany({questionId:req.params.questionId})
-                .then((reviewObj)=>{})
+                .then((answer_obj)=>{})
         })
         .catch((err)=>{
           Util.logError(err.msg,err);
@@ -338,11 +338,11 @@ const User = {
   getMyAnswers:function(req,res){
         db.Answer
         .find({userId:req.user._id})
-        .then((answers)=>{
-           answers.forEach(answer=>{
+        .then((answers_obj)=>{
+           answers_obj.forEach(answer=>{
              answer._doc.user={name:req.user.name}
            })
-           res.json({status:"sucess",answers:answers});
+           res.json({status:"sucess",answers:answers_obj});
         })
         .catch((err)=>{
           Util.logError(err.msg,err);
@@ -352,9 +352,9 @@ const User = {
   getMyAnswer:function(req,res){
     if(req.params.answerId){
         db.Answer.findOne({userId:req.user._id,_id:req.params.answerId})
-        .then((answer)=>{
-              if(answer){
-                res.json({status:"sucess",answer:answer});
+        .then((answer_obj)=>{
+              if(answer_obj){
+                res.json({status:"sucess",answer:answer_obj});
               }else{
                res.json({status:"failed",msg:"Something went wrong"});
               }
@@ -372,9 +372,9 @@ const User = {
          
          db.Answer
            .create({userId:req.user._id,questionId:req.body.question_id,answer:req.body.answer})
-           .then((answerObj)=>{
-              if(answerObj){
-                res.json({status:"sucess",answer:{...answerObj._doc,user:{name:req.user.name}}})
+           .then((answer_obj)=>{
+              if(answer_obj){
+                res.json({status:"sucess",answer:{...answer_obj._doc,user:{name:req.user.name}}})
               }else{
                res.json({status:"failed",msg: "Sorry Something went wrong. Please try again"});
               }
@@ -391,8 +391,12 @@ const User = {
       if(req.body.answer_id  && req.body.answer){
         db.Answer
           .findOneAndUpdate({_id:req.body.answer_id,userId:req.user._id,},{answer:req.body.answer})
-          .then((answerObj)=>{
-                res.json({status:"sucess",msg:"sucessfully updated your review"})
+          .then((answer_obj)=>{
+              if(answer_obj){
+                res.json({status:"sucess",msg:"sucessfully updated your answer"})
+              }else{
+                 res.json({status:"failed",msg:"Something went wrong"});
+              }
           })
           .catch((err)=>{
             Util.logError(err.msg,err);
@@ -406,7 +410,7 @@ const User = {
       if(req.params.answerId){
         db.Answer
         .findOneAndRemove({_id:req.params.answerId})
-        .then((answerObj)=>{
+        .then((answer_obj)=>{
               res.json({status:"sucess",msg:"sucessfully deleted your answer"})
         })
         .catch((err)=>{

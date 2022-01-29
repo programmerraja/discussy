@@ -17,22 +17,24 @@ const Answer = {
             {$lookup:user_lookup},
             {$unset:["user._id","user.email","user.isEmailVerified","user.password","user.createdAt","user.updatedAt"]},
           ])
-        .then((answers)=>{
-            if(answers){
+        .then((answers_obj)=>{
+            if(answers_obj){
               db.Question
                 .aggregate([
                     {$match:{_id:mongoose.Types.ObjectId(req.params.questionId)}},
                     {$lookup:user_lookup},
                     {$unset:["user._id","user.email","user.isEmailVerified","user.password","user.createdAt","user.updatedAt"]},
                 ])
-                .then((question)=>{
-                  //adding question to first one arr
-                  let new_answers={"question":{...question[0],
-                                             user:{_id:question[0]?.user[0]?._id,name:question[0]?.user[0]?.name}
+                .then((question_obj)=>{
+                  //adding question and user data 
+                  let new_answers={"question":{...question_obj[0],
+                                             user:{_id:question_obj[0]?.user[0]?._id,name:question_obj[0]?.user[0]?.name}
                                             },
                                              answers:[]}
-                  answers.forEach(ques=>{
-                    new_answers.answers.push({...ques,user:{_id:ques.user[0]._id,name:ques.user[0].name}})
+                  
+                  answers_obj.forEach(ans=>{
+                    //adding user data to each answer (appending user data as obj instead of array)
+                    new_answers.answers.push({...ans,user:{_id:ans.user[0]._id,name:ans.user[0].name}})
                   })
 
                   res.json({status:"sucess",answers:new_answers});
@@ -66,13 +68,17 @@ const Answer = {
             {$unset:["user._id","user.email","user.isEmailVerified","user.password","user.createdAt","user.updatedAt"]},
             {$sort:{[req.query.sortBy]:parseInt(req.query.type)}}
           ])
-        .then((answers)=>{
-            if(answers){
+        .then((answers_obj)=>{
+            if(answers_obj){
                   let new_answers={answers:[]}
-                  answers.forEach(ques=>{
-                    new_answers.answers.push({...ques,user:{_id:ques.user[0]._id,name:ques.user[0].name}})
+                  answers_obj.forEach(ans=>{
+                    //adding user data to each answer (appending user data as obj instead of array)
+                    new_answers.answers.push({...ans,user:{_id:ans.user[0]._id,name:ans.user[0].name}})
                   })
+
                   res.json({status:"sucess",answers:new_answers});
+            }else{
+                res.json({status:"failed",msg:"Something went wrong"});
             }
         })
         .catch((err)=>{
