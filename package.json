@@ -9,7 +9,7 @@
     "start:dev": "node server.js",
     "client": "cd client && npm run start",
     "seed": " node scripts/Seeds.js",
-   
+    "install": "cd client && npm install ",
     "build": "cd client && npm run build ",
     "build2": "cd admin && npm install && npm run build ",
     "heroku-postbuild": " npm run build && npm run build2"
