@@ -1,0 +1,137 @@
+/*    NAVIGATION STYLE    */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  /*backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 3px 0 rgba(31, 38, 135, 0.37);*/
+  /*box-shadow: rgb(196 199 204) 0px 0px 2px;*/
+  color: var(--font-color);
+  margin:0;
+  height: 50px;
+}
+
+.nav-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5rem;
+  z-index: 10;
+
+}
+.nav-brand a{
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-brand img{
+  height: 40px;
+}
+
+.nav-center {
+  margin: auto;
+}
+
+.nav_list {
+  display: flex;
+  margin-right: 13px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+}
+
+.nav_link i {
+  font-size: 20px;
+}
+
+.nav_link a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.nav_link a:hover {
+  border: 1px solid white;
+  color:white;
+  text-decoration: none;
+
+}
+
+.user_img {
+  height: 30px;
+  width: 30px;
+}
+
+/* media query for mobile phones */
+@media (max-width:800px) {
+
+  /*  NAVIGATION */
+  .crosslines {
+    position: absolute;
+    right: 10px;
+    top: 1px;
+  }
+
+  .smallline {
+    width: 20px;
+    border: 1px solid;
+    margin-top: 3px;
+  }
+
+  .crosslines:after {
+    content: "x";
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    font-family: Arial;
+  }
+
+  .lines {
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+  }
+
+  .crosslines_show {
+    display: block;
+    z-index: 10;
+  }
+
+  .lines_hide {
+    display: none;
+  }
+  .nav_list {
+    width: 100%;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 350px;
+    background: var(--primary-color);
+    top: 0px;
+    transition: transform  0.3s ease-in;
+    transform: translateX(-800px);
+    z-index: 100;
+  }
+
+  .nav_list_show {
+    transform: translateX(0px);
+    z-index: 100;
+  }
+
+  .nav_link {
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}

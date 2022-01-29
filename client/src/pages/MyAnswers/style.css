@@ -1,0 +1,13 @@
+.review_wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+a{
+	color: var(--primary-color);
+}
+.text_center{
+	text-align: center;
+	margin: 1rem;
+}

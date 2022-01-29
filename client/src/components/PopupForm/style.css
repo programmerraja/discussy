@@ -1,0 +1,49 @@
+.popup_form-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: var(--secondary-color-lightr);
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+}
+.popup_form{
+	height: 50%;
+    width: 89%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.popup_form-btncancel,
+.popup_form-btnsubmit{
+	color: var(--font-color);
+    background-color: var(--primary-color);
+    padding: 7px 16px;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    width: 90px;
+    border-radius: 2px;
+}
+.popup_form-btncancel{
+	background-color: red;
+}
+.popup_form-input{
+	width: 79%;
+	margin:0 auto;
+}
+.popup_form-textarea{
+	width: 100%;
+	margin:auto;
+}
+
+.popup_form-btn{
+	display: flex;
+	justify-content: space-between;
+	width: 80%;
+}

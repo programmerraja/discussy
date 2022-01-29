@@ -1,0 +1,9 @@
+.discuss_wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.discuss_button{
+	width: auto;
+}

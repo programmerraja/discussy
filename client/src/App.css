@@ -1,0 +1,41 @@
+:root{
+	--primary-color:#0ab377;
+	--secondary-color:#152251;
+  --secondary-color-light:#182045;
+  --secondary-color-lightr:rgba(24,32,69,0.3);
+  --secondary-color-input:#152248;
+  --font-color: white;
+}
+body{
+  margin: 0;
+  padding: 0;
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+  font-family: 'Poppins',sans-serif;
+}
+
+.swal-modal,
+.swal-icon{
+  background-color:rgba(21,34,81,0.8);
+  color: var(--font-color);
+}
+.swal-icon{
+  display: none;
+}
+
+.swal-title,
+.swal-text{
+  color: var(--font-color);
+}
+.swal_text{
+  margin: 0;
+}
+.swal-button{
+  background-color: var(--primary-color);
+  border-radius: 0.2rem;
+  outline: none;
+  box-shadow: none;
+}
+.swal-button:hover{
+  box-shadow: none;
+}

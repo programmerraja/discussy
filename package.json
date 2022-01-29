@@ -1,0 +1,37 @@
+{
+  "name": "Discussy",
+  "version": "1.0.0",
+  "description": "Discussy a website for sharing thoughts",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "node server.js",
+    "client": "cd client && npm run start",
+    "seed": " node scripts/Seeds.js",
+   
+    "build": "cd client && npm run build ",
+    "build2": "cd admin && npm install && npm run build ",
+    "heroku-postbuild": " npm run build && npm run build2"
+  },
+  "author": "K.boopathi",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^5.12.13",
+    "nodemailer": "^6.7.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "sanitize-html": "^2.4.0",
+    "validator": "^13.6.0"
+  }
+}

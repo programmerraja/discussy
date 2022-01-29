@@ -1,0 +1,72 @@
+.forget_container,
+.reset_container {
+  background-color: var(--secondary-color-light);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 350px;
+  margin: 20px auto;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.forget_img,
+.reset_img .forget_text,
+.reset_text {
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forget_text h2,
+.reset_text h2 {
+  margin: 0;
+}
+
+.forget_img img,
+.reset_img img {
+  height: 170px;
+  width: 250px;
+}
+
+.forget_email,
+.reset_password {
+  border: 1px solid white;
+  background-color: var(--secondary-color-light);
+  border-radius: 5px;
+  align-self: flex-start;
+  height: 29px;
+  width: 90%;
+  outline: none;
+  font-size: 1.1rem;
+
+}
+
+.send_link,
+.change_password {
+  background-color:  var(--primary-color);
+  color: white;
+  height: 35px;
+  width: 130px;
+  margin: 10px;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.forget_error {
+ 
+  color: red;
+  font-size: 1rem;
+  margin: 10px;
+}
+
+.send_link:hover,
+.change_password:hover {
+  background-color: var(--primary-color);
+}
