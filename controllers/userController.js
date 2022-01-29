@@ -120,12 +120,13 @@ const User = {
                 _id: user_id
             });
             if (user) {
-                if (user.checkPassword(old_password, user.password)) {
+                if (user.checkPassword(old_password)) {
                     if (new_password) {
                         user.name = name;
                         user.password = new_password;
                     } else {
                         user.name = name;
+                        user.password=old_password;
                     }
                     user.save()
                     .then((user)=>{

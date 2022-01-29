@@ -34,9 +34,11 @@ const UserSchema = new mongoose.Schema(
 
 UserSchema.methods = {
   checkPassword: function (inputPassword) {
+    // console.log("checkPassword ",inputPassword)
     return bcrypt.compareSync(inputPassword, this.password);
   },
   hashPassword: (plainTextPassword) => {
+    // console.log("hased new",plainTextPassword)
     return bcrypt.hashSync(plainTextPassword, 10);
   }
 };

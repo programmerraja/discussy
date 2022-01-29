@@ -1,4 +1,5 @@
-.question_wrapper{
+.question_wrapper,
+.answer_wrapper{
 	display: flex;
 	justify-content: center;
 	align-items: center;
