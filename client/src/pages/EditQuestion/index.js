@@ -58,7 +58,7 @@ function EditQuestion() {
                    setLoading(false);
                    if(res.data.status==="sucess"){
                      errorHandler(false,
-                      "Your Question added sucessfully."
+                      res.data.msg
                       ).then(()=>{history.push("/user/myQuestions");});
                    }
                    else{

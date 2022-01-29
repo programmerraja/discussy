@@ -24,7 +24,7 @@ function AddQuestion() {
         if(topics && question){
             return true;
        }else{
-        return false;
+          return false;
        }
    }
 
@@ -37,7 +37,7 @@ function AddQuestion() {
                    setLoading(false);
                    if(res.data.status==="sucess"){
                      errorHandler(false,
-                      "Your Question added sucessfully."
+                      res.data.msg
                       ).then(()=>{history.push("/user/myQuestions");});
                    }
                    else{

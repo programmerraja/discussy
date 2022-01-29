@@ -120,7 +120,7 @@ const User = {
                 _id: user_id
             });
             if (user) {
-                if (bcrypt.compareSync(old_password, user.password)) {
+                if (user.checkPassword(old_password, user.password)) {
                     if (new_password) {
                         user.name = name;
                         user.password = new_password;
@@ -292,7 +292,7 @@ const User = {
         }else{
               res.json({status:"failed",msg:"Query missing"});
         }
-      },
+    },
     //single question for editing
     getMyQuestion:function(req,res){
         db.Question.findOne({userId:req.user._id,_id:req.params.questionId})
