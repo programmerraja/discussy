@@ -80,10 +80,10 @@ function EditQuestion() {
 
   return ( <>
             <SquareLoader  loading={loading}/>
-            <div className="question-wrapper">
-              <div className="question-container">
+            <div className="question_wrapper">
+              <div className="question_container">
                     <Form topics={topics} setTopics={setTopics} question={question} setQuestion={setQuestion}/>
-                    <button onClick={onSubmitQuestion} className="question-button">update Question</button>
+                    <button onClick={onSubmitQuestion} className="question_button">update Question</button>
               </div>
             </div>
           </>);
