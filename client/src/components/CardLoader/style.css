@@ -13,11 +13,15 @@
   height: 8px;
   width: 30px;
   margin: 1rem 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .luser_big-text1,
 .luser_big-text2,
 .luser_big-text3{
+  position: relative;
+  overflow: hidden;
   background-color: #8080805c;
   height: 8px;
   width: 150px;
