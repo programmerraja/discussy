@@ -39,6 +39,14 @@
 .questioncard_like-icon,
 .answercard_like-icon{
   cursor: pointer;
+  background-color: transparent;
+  border:0;
+  outline: 0;
+
+}
+.questioncard_like-icon i,
+.answercard_like-icon i{
+  color: white;
 }
 .questioncard_edit-icon i,
 .answercard_edit-icon i

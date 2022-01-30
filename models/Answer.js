@@ -17,7 +17,7 @@ const AnswerSchema = new mongoose.Schema(
       type:String,
       required:true,
     },
-     likes:{
+    likes:{
       type: [{type: String}]
     }
   },

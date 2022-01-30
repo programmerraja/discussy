@@ -25,7 +25,7 @@ function AnswerCard({isLoggedin,_id,questionId,answer,likes=[],likeMyAnswer,user
         <div className="answercard_container">
             
             {isEditing &&
-              <div className="edit_icon">
+              <div className="answercard_edit-icon">
                 <Link to={`/user/edit/answer/${_id}`}>
                  <i className="fas fa-edit"></i>
                 </Link>
@@ -59,8 +59,11 @@ function AnswerCard({isLoggedin,_id,questionId,answer,likes=[],likeMyAnswer,user
                 }
             </div>
              
-            {likeMyAnswer && <div className={isLiked?"answercard_like-icon liked":"answercard_like-icon"} >
-               <i className="fas fa-thumbs-up " onClick={likeAnswer}></i>{" "}{likes_count}
+            {likeMyAnswer && <div>
+               <button onClick={likeAnswer} className={isLiked?"answercard_like-icon liked":"answercard_like-icon"}>
+               <i className="fas fa-thumbs-up " ></i>
+               </button>
+               {" "}{likes_count}
               </div>
             }
           

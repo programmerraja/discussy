@@ -27,7 +27,7 @@ function QuestionCard({isLoggedin,_id,topics,desc,likes=[],likeMyQuestion,user,c
     <>
         <div className="questioncard_container" >
             {isEditing &&
-              <div className="edit_icon">
+              <div className="questioncard_edit-icon">
                 <Link to={`/user/edit/question/${_id}`}>
                  <i className="fas fa-edit"></i>
                 </Link>
@@ -70,8 +70,11 @@ function QuestionCard({isLoggedin,_id,topics,desc,likes=[],likeMyQuestion,user,c
                   })
                }
             </div>
-            {likeMyQuestion &&  <div className={isLiked?"questioncard_like-icon liked":"questioncard_like-icon"} >
-                 <i className="fas fa-thumbs-up " onClick={likeQuestion}></i>{" "}{likes_count}
+            {likeMyQuestion &&  <div>
+               <button onClick={likeQuestion} className={isLiked?"questioncard_like-icon liked":"questioncard_like-icon"}>
+                  <i className="fas fa-thumbs-up"></i>
+                </button>
+                 {" "}{likes_count}
               </div>
             }
             {isEditing &&
