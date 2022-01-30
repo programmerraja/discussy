@@ -16,7 +16,11 @@ const QuestionSchema = new mongoose.Schema(
     topics:{
       type:Array,
       required:true
+    },
+    likes:{
+      type: [{type: String}]
     }
+
   },
   { timestamps: true }
 );

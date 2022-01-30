@@ -7,10 +7,10 @@ const answerController = require("../controllers/answerController.js");
 //middleware
 const Auth = require("../middleware/auth.js");
 
-router.get("/getAnswers/:questionId",
+router.get("/getAnswers/:questionId",Auth.isAuthenticated(),
 			answerController.getAnswers);
 
-router.get("/getSortedAnswers/:questionId/",
+router.get("/getSortedAnswers/:questionId/",Auth.isAuthenticated(),
 			answerController.getSortedAnswer);
 
 module.exports = router;

@@ -16,7 +16,7 @@ const Question = {
             let new_questions=[]
             questions_obj.forEach(ques=>{
             //adding user data to each question (appending user data as obj instead of array)
-              new_questions.push({...ques,user:{_id:ques.user[0]._id,name:ques.user[0].name}})
+              new_questions.push({...ques,user:{_id:ques.user[0]._id,name:ques.user[0].name,isLiked:ques.likes?.includes(req.user.id)}})
             })
              res.json({status:"sucess",questions:new_questions});
          

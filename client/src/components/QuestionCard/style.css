@@ -29,13 +29,23 @@
   width: 30px;
   margin-right: 0.5rem;
 }
-.edit_icon {
+.questioncard_edit-icon,
+.answercard_edit-icon
+ {
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
 }
-.edit_icon i
+.questioncard_like-icon,
+.answercard_like-icon{
+  cursor: pointer;
+}
+.questioncard_edit-icon i,
+.answercard_edit-icon i
 {
+  color: var(--primary-color);
+}
+.liked i{
   color: var(--primary-color);
 }
 .questioncard_date,

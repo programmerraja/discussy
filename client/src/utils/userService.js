@@ -37,6 +37,9 @@ export default {
   getMyQuestion:function(question_id){
     return axios.get(`/user/getMyQuestion/${question_id}`);
   },
+  likeMyQuestion:function(question_id){
+    return axios.get(`/user/likeMyQuestion/${question_id}`);
+  },
   addMyQuestion:function(review){
     return axios.post("/user/addMyQuestion/",review);
   },
@@ -53,6 +56,9 @@ export default {
   },
   getMyAnswer:function(answer_id){
     return axios.get(`/user/getMyAnswer/${answer_id}`);
+  },
+  likeMyAnswer:function(answer_id){
+    return axios.get(`/user/likeMyAnswer/${answer_id}`);
   },
   addMyAnswer:function(answer){
     return axios.post("/user/addMyAnswer/",answer);

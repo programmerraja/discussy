@@ -5,7 +5,7 @@ import userImg from "../../img/user.svg";
 
 import "./style.css";
 
-function FilterBar({search_content,search,setSortBy,sort,}){
+function FilterBar({search_content,search,setSortBy,sort}){
   return ( 
     	<div className="questions_search-wrapper">
 					 <input type="text" 

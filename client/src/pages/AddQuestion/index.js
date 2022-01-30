@@ -13,9 +13,9 @@ import "./style.css"
 
 function AddQuestion() {
 
-   const [loading,setLoading]=useState(false);
+   const[loading,setLoading]=useState(false);
 
-   const [question,setQuestion]=useState("");
+   const[question,setQuestion]=useState("");
    const[topics,setTopics]=useState([]);
 
    const history = useHistory();

@@ -7,10 +7,10 @@ const questionController = require("../controllers/questionController.js");
 //middleware
 const Auth = require("../middleware/auth.js");
 
-router.get("/getQuestions/",
+router.get("/getQuestions/",Auth.isAuthenticated(),
 			questionController.getQuestions);
 
-router.get("/getSortedQuestions/",
+router.get("/getSortedQuestions/",Auth.isAuthenticated(),
 			questionController.getSortedQuestions);
 
 

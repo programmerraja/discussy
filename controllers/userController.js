@@ -309,6 +309,27 @@ const User = {
           res.json({status:"failed",msg:"Something went wrong"});
         })
   },
+  likeMyQuestion:function(req,res){
+    if(req.params.questionId){
+      db.Question
+        .findOneAndUpdate({_id:req.params.questionId,likes:{"$nin":[String(req.user._id)]}},
+                        {"$push":{likes:[String(req.user._id)]}}
+                      )
+        .then((question_obj)=>{
+          if(!question_obj){
+            //if user already liked remove his id
+             db.Question
+               .findOneAndUpdate({_id:req.params.questionId},
+                        {"$pull":{
+                                  likes:{ $in:[String(req.user._id)]}
+                                 }
+                        }
+                      ) .then((question_obj)=>{});
+          }
+          res.send()
+        })
+    }
+  },
   addMyQuestion:function (req,res){
       if(req.body.topics && req.body.question){
          db.Question
@@ -408,6 +429,27 @@ const User = {
       }else{
         res.json({status:"failed",msg: "Please fill all the data"});
       }
+  },
+  likeMyAnswer:function(req,res){
+    if(req.params.answerId){
+      db.Answer
+        .findOneAndUpdate({_id:req.params.answerId,likes:{"$nin":[String(req.user._id)]}},
+                        {"$push":{likes:[String(req.user._id)]}}
+                      )
+        .then((answer_obj)=>{
+          if(!answer_obj){
+            //if user already liked remove his id
+             db.Answer
+               .findOneAndUpdate({_id:req.params.answerId},
+                        {"$pull":{
+                                  likes:{ $in:[String(req.user._id)]}
+                                 }
+                        }
+                      ) .then((answer_obj)=>{});
+          }
+          res.send()
+        })
+    }
   },
   updateMyAnswer:function (req,res){
       if(req.body.answer_id  && req.body.answer){

@@ -9,8 +9,4 @@ router.use("/", question);
 router.use("/",answer);
 
 
-
-
-
-
 module.exports = router;

@@ -73,7 +73,7 @@ export default {
   getMySortedQuestions:userService.getMySortedQuestions,
   getMyQuestion:userService.getMyQuestion,
 
-
+  likeMyQuestion:userService.likeMyQuestion,
   addMyQuestion:userService.addMyQuestion,
   updateMyQuestion:userService.updateMyQuestion,
   deleteMyQuestion:userService.deleteMyQuestion,
@@ -82,6 +82,7 @@ export default {
   getMyAnswers:userService.getMyAnswers,
   getMyAnswer:userService.getMyAnswer,
 
+  likeMyAnswer:userService.likeMyAnswer,
   addMyAnswer:userService.addMyAnswer,
   updateMyAnswer:userService.updateMyAnswer,
   deleteMyAnswer:userService.deleteMyAnswer,

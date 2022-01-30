@@ -82,6 +82,14 @@ function QuestionPage({isLoggedin}){
     }
   }
 
+  const likeMyQuestion=(question_id)=>{
+    API.likeMyQuestion(question_id)
+  }
+
+  const likeMyAnswer=(answer_id)=>{
+    API.likeMyAnswer(answer_id)
+  }
+
   const writeAnswer=()=>{
     //allow only if user logged in else redirect
     if(isLoggedin){
@@ -138,7 +146,7 @@ function QuestionPage({isLoggedin}){
               (!loading && 
               question.desc)
               ? 
-              <QuestionCard key={question._id} {...question}/>  
+              <QuestionCard key={question._id} likeMyQuestion={likeMyQuestion} {...question} />  
               :null
         }
 
@@ -169,6 +177,7 @@ function QuestionPage({isLoggedin}){
                 return(
                     <AnswerCard 
                         key={answer._id}
+                        likeMyAnswer={likeMyAnswer}
                         user={answers.user}
                         {...answer}/>  
                   ) 

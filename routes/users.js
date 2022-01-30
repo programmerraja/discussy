@@ -41,10 +41,14 @@ router.get("/getMySortedQuestions",
 			Auth.isAuthenticatedUser(),
 			userController.getMySortedQuestions);
 
-
 router.get("/getMyQuestion/:questionId",
 			Auth.isAuthenticatedUser(),
 			userController.getMyQuestion);
+
+router.get("/likeMyQuestion/:questionId",
+			Auth.isAuthenticatedUser(),
+			checkMailVerified,
+			userController.likeMyQuestion);
 
 router.post("/addMyQuestion",
 			Auth.isAuthenticatedUser(),
@@ -67,6 +71,11 @@ router.get("/getMyAnswers",
 router.get("/getMyAnswer/:answerId",
 			Auth.isAuthenticatedUser(),
 			userController.getMyAnswer);
+
+router.get("/likeMyAnswer/:answerId",
+			Auth.isAuthenticatedUser(),
+			checkMailVerified,
+			userController.likeMyAnswer);
 
 router.post("/addMyAnswer",
 			Auth.isAuthenticatedUser(),

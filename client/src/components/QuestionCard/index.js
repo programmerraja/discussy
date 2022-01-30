@@ -1,11 +1,26 @@
-import React from "react";
+import {React,useState} from "react";
 import {Link } from "react-router-dom"; 
 
 import userImg from "../../img/user.svg";
 
 import "./style.css";
 
-function QuestionCard({_id,topics,desc,user,createdAt,updatedAt,isEditing,deleteQuestion}){
+function QuestionCard({_id,topics,desc,likes=[],likeMyQuestion,user,createdAt,updatedAt,isEditing,deleteQuestion}){
+  
+  const [isLiked,setIsLiked]=useState(user.isLiked)
+  const[likes_count,setLikesCount]=useState(likes.length)
+
+  const likeQuestion=()=>{
+    likeMyQuestion(_id)
+    if(isLiked){
+      setLikesCount((likes_count)=>likes_count-1);
+    }else{
+      setLikesCount((likes_count)=>likes_count+1);
+    }
+    setIsLiked((isLiked)=>!isLiked);
+
+  }
+
   return ( 
     <>
         <div className="questioncard_container" >
@@ -53,10 +68,13 @@ function QuestionCard({_id,topics,desc,user,createdAt,updatedAt,isEditing,delete
                   })
                }
             </div>
-
+            {likeMyQuestion &&  <div className={isLiked?"questioncard_like-icon liked":"questioncard_like-icon"} >
+                 <i className="fas fa-thumbs-up " onClick={likeQuestion}></i>{" "}{likes_count}
+              </div>
+            }
             {isEditing &&
               <>
-                <div className="edit_icon">
+                <div className="questioncard_edit-icon ">
                   <i className="fas fa-trash-alt" onClick={()=>{deleteQuestion(_id)}}></i>
                 </div>
                 <Link to={`/question/${_id}`} className="questioncard_link"> 

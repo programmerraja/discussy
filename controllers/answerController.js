@@ -28,15 +28,16 @@ const Answer = {
                 .then((question_obj)=>{
                   //adding question and user data 
                   let new_answers={"question":{...question_obj[0],
-                                             user:{_id:question_obj[0]?.user[0]?._id,name:question_obj[0]?.user[0]?.name}
+                                             user:{_id:question_obj[0]?.user[0]?._id,name:question_obj[0]?.user[0]?.name,
+                                              isLiked:question_obj[0].likes?.includes(String(req.user.id))}
                                             },
                                              answers:[]}
                   
                   answers_obj.forEach(ans=>{
                     //adding user data to each answer (appending user data as obj instead of array)
-                    new_answers.answers.push({...ans,user:{_id:ans.user[0]._id,name:ans.user[0].name}})
+                    new_answers.answers.push({...ans,user:{_id:ans.user[0]._id,name:ans.user[0].name
+                                                ,isLiked:ans.likes?.includes(String(req.user.id))}})
                   })
-
                   res.json({status:"sucess",answers:new_answers});
                 })
                 .catch((err)=>{
