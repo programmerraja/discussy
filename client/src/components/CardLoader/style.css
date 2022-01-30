@@ -30,8 +30,12 @@
   width: 200px;
 }
 
-.luser_img::after, 
-.luser_text::after{
+.luser_img::after,
+.luser_small-text::after,
+luser_big-text1::after,
+.luser_big-text2::after,
+.luser_big-text3::after
+{
   display: block;
   content: "";
   position: absolute;
