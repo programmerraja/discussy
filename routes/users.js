@@ -61,6 +61,7 @@ router.post("/updateMyQuestion",
 			userController.updateMyQuestion);
 
 router.get("/deleteMyQuestion/:questionId/",
+			Auth.isAuthenticatedUser(),
 			userController.deleteMyQuestion);
 
 //user answer routes
