@@ -133,7 +133,7 @@ function MyQuestion(){
                                 key={question_obj._id}
                                 {...question_obj}
                                 deleteQuestion={deleteQuestion}
-                                isEditing={true}/>
+                                isEditing={1}/>
                           )
                     }else{
                       return null

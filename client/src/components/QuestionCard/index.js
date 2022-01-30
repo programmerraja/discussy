@@ -82,10 +82,13 @@ function QuestionCard({isLoggedin,_id,topics,desc,likes=[],likeMyQuestion,user,c
                 <div className="questioncard_edit-icon ">
                   <i className="fas fa-trash-alt" onClick={()=>{deleteQuestion(_id)}}></i>
                 </div>
-                <Link to={`/question/${_id}`} className="questioncard_link"> 
-                      View question
-                </Link>
+                
               </>
+            }
+            {isEditing===1?
+              <Link to={`/question/${_id}`} className="questioncard_link"> 
+                      View Answer
+              </Link>:null
             }
         </div>
     </>);

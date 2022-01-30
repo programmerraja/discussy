@@ -85,7 +85,7 @@ function MyAnswer(){
                       key={answer._id}
                       {...answer}
                       deleteAnswer={deleteAnswer}
-                      isEditing={true}/>
+                      isEditing={1}/>
                 ) 
             })
         }
