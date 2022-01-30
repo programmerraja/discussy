@@ -18,12 +18,6 @@ passport.deserializeUser((userID, done) => {
 //startegy for users
 passport.use("user_local",localStrategy.userStrategy);
 passport.use("user_jwt",jwtStrategy.userStrategy);
-passport.use("user_check",jwtStrategy.userCheckStrategy);
-
-
-
-
-
 
 
 module.exports = passport;
