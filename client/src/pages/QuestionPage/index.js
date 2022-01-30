@@ -109,7 +109,7 @@ function QuestionPage({isLoggedin}){
           if(res.data.status==="sucess"){
               errorHandler(false,"Thanks for adding answer");
               //adding new answer to old answer
-              setAnswers([{...res.data.answer},...answers])
+              setAnswers([{...res.data.answer,isEditing:true},...answers])
               //setting answer to empty str
               setAnswer("")
            }
@@ -127,6 +127,63 @@ function QuestionPage({isLoggedin}){
         }
       });
     }
+  }
+
+  const deleteQuestion=(question_id)=>{
+     swal({
+      title: "Are you sure?",
+      text: "You want to delete this question.",
+      buttons: ["No", "Yes"],
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        API.deleteMyQuestion(question_id)
+        .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              errorHandler(true,res.data.msg);
+              history.push("/user/myQuestions/");
+            }
+        
+        })
+        .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+              errorHandler(true);
+          }
+        });
+    }
+    });
+  }
+
+  const deleteAnswer=(answer_id)=>{
+     swal({
+      title: "Are you sure?",
+      text: "You want to delete this answer.",
+      buttons: ["No", "Yes"],
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        API.deleteMyAnswer(answer_id)
+        .then((res)=>{
+            setLoading(false);
+            if(res.data.status==="sucess"){
+              errorHandler(true,res.data.msg);
+            }
+        
+        })
+        .catch((res)=>{
+          setLoading(false);
+          if(res.data && res.data.msg){
+              errorHandler(true,res.data.msg);
+          }else{
+              errorHandler(true);
+          }
+        });
+    }
+    });
   }
 
   return ( 
@@ -150,6 +207,7 @@ function QuestionPage({isLoggedin}){
                 key={question._id} 
                 isLoggedin={isLoggedin} 
                 likeMyQuestion={likeMyQuestion} 
+                deleteQuestion={deleteQuestion}
                 {...question} />  
               :null
         }
@@ -182,6 +240,7 @@ function QuestionPage({isLoggedin}){
                     <AnswerCard 
                         key={answer._id}
                         likeMyAnswer={likeMyAnswer}
+                        deleteAnswer={deleteAnswer}
                         isLoggedin={isLoggedin}
                         user={answers.user}
                         {...answer}/>  
