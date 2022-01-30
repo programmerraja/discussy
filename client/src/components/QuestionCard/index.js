@@ -5,19 +5,21 @@ import userImg from "../../img/user.svg";
 
 import "./style.css";
 
-function QuestionCard({_id,topics,desc,likes=[],likeMyQuestion,user,createdAt,updatedAt,isEditing,deleteQuestion}){
+function QuestionCard({isLoggedin,_id,topics,desc,likes=[],likeMyQuestion,user,createdAt,updatedAt,isEditing,deleteQuestion}){
   
   const [isLiked,setIsLiked]=useState(user.isLiked)
   const[likes_count,setLikesCount]=useState(likes.length)
 
   const likeQuestion=()=>{
-    likeMyQuestion(_id)
-    if(isLiked){
-      setLikesCount((likes_count)=>likes_count-1);
-    }else{
-      setLikesCount((likes_count)=>likes_count+1);
+    if(isLoggedin){
+      likeMyQuestion(_id)
+      if(isLiked){
+        setLikesCount((likes_count)=>likes_count-1);
+      }else{
+        setLikesCount((likes_count)=>likes_count+1);
+      }
+      setIsLiked((isLiked)=>!isLiked);
     }
-    setIsLiked((isLiked)=>!isLiked);
 
   }
 

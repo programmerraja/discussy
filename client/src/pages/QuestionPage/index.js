@@ -146,7 +146,11 @@ function QuestionPage({isLoggedin}){
               (!loading && 
               question.desc)
               ? 
-              <QuestionCard key={question._id} likeMyQuestion={likeMyQuestion} {...question} />  
+              <QuestionCard 
+                key={question._id} 
+                isLoggedin={isLoggedin} 
+                likeMyQuestion={likeMyQuestion} 
+                {...question} />  
               :null
         }
 
@@ -178,6 +182,7 @@ function QuestionPage({isLoggedin}){
                     <AnswerCard 
                         key={answer._id}
                         likeMyAnswer={likeMyAnswer}
+                        isLoggedin={isLoggedin}
                         user={answers.user}
                         {...answer}/>  
                   ) 

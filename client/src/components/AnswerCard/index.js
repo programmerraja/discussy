@@ -3,19 +3,21 @@ import {Link } from "react-router-dom";
 
 import userImg from "../../img/user.svg";
 
-function AnswerCard({_id,questionId,answer,likes=[],likeMyAnswer,user,createdAt,updatedAt,isEditing,deleteAnswer}){
+function AnswerCard({isLoggedin,_id,questionId,answer,likes=[],likeMyAnswer,user,createdAt,updatedAt,isEditing,deleteAnswer}){
   
   const [isLiked,setIsLiked]=useState(user.isLiked)
   const[likes_count,setLikesCount]=useState(likes.length)
 
   const likeAnswer=()=>{
-    likeMyAnswer(_id)
-    if(isLiked){
-      setLikesCount((likes_count)=>likes_count-1);
-    }else{
-      setLikesCount((likes_count)=>likes_count+1);
+    if(isLoggedin){
+      likeMyAnswer(_id)
+      if(isLiked){
+        setLikesCount((likes_count)=>likes_count-1);
+      }else{
+        setLikesCount((likes_count)=>likes_count+1);
+      }
+      setIsLiked((isLiked)=>!isLiked);
     }
-    setIsLiked((isLiked)=>!isLiked);
 
   }
   return ( 
