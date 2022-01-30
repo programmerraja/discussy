@@ -10,6 +10,7 @@ A website for sharing question. build on MERN stack
 	<li>Only regisetered user can add question/answer</li>
 	<li>User need to verify his mail to add question or answer</li>
 	<li>User can write answer for his own question</li>
+	<li>User can like question/answer</li>
 	<li>If user delete the question all the answers will be deleted</li>
 	<li>User can edit question/answer</li>
 	<li>User can search question</li>
