@@ -13,8 +13,8 @@ import "./style.css";
 
 
 function Signin({setUser}){
-  const [email,setEmail]=useState("test@gmail.com");
-  const [password,setPassword]=useState("test@gmail.com");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
   const [loading,setLoading]=useState("");
 
   const history = useHistory();
@@ -60,7 +60,7 @@ function Signin({setUser}){
     <>
     <SquareLoader  loading={loading}/>
     <div className="user">
-      <p>Welcome Back use this credntials for testing</p>
+      <p>Welcome Back</p>
     </div>  
     <div className="signin_container">
       <div className="form_container">
